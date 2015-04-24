@@ -48,12 +48,15 @@ public class Main{
 		}
 
 		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
+			//favor retornar o ArrayList das imagens ordenadas
+			ArrayList<Imagem> imagensOrdenadas = imagens; //isso será substituido pelo arquivo de cada um.
 
 		FileWriter arquivo = new FileWriter("blablabla.txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
-		gravarArquivo.println("blebleble!"); //Grava uma linha no arquivo e desce para outra linha (Não consegui inserir \n, quem puder verificar, é de boa ajuda...)
-		gravarArquivo.println("oi!");
+		for(int x=0;x<imagens.size();x++){
+			gravarArquivo.println(imagensOrdenadas.get(x).getNome());
+		}
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
 
 	}
