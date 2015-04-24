@@ -49,7 +49,7 @@ public class Main{
 
 		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
 			//favor retornar o ArrayList das imagens ordenadas
-			ArrayList<Imagem> imagensOrdenadas = imagens; //isso será substituido pelo arquivo de cada um.
+			ArrayList<Imagem> imagensOrdenadas = Sorts.exemploSort(imagens); //é só colocar essa linha para cada método de sort
 
 		FileWriter arquivo = new FileWriter("blablabla.txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
