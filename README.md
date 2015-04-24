@@ -17,3 +17,7 @@ Depois eu coloco mais coisas aqui...
 [Array List (ou Listas Ordenadas)](http://www.devmedia.com.br/explorando-a-classe-arraylist-no-java/24298) - Decorar essa porra!
 
 Objetos - Sim, tem que saber usar...
+
+
+##Onde estudar:
+[64 Exercícios](https://github.com/victorperin/Exercicios-Java) - Procurem pelos exercícios de nível 6 e os exercícios da segunda lista. (Se possível chegue ao fim, pois tem exercícios realmente bons...)
