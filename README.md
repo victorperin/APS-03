@@ -10,3 +10,9 @@ Depois eu coloco mais coisas aqui...
 [Resumo do Workflow](https://guides.github.com/introduction/flow/) - (LEIA OS OUTROS ANTES!) Como é o passo a passo para colaborar com códigos.
 
 [GitHub for Windows](https://windows.github.com/) - Precisando de alguma coisa mais rápida? Usa o Github for windows (Depois de ler tudo, por favor!)
+
+
+
+###O que estudar:
+[Array List (ou Listas Ordenadas)](http://www.devmedia.com.br/explorando-a-classe-arraylist-no-java/24298) - Decorar essa porra!
+Objetos - Sim, tem que saber usar...
