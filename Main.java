@@ -4,7 +4,7 @@
  *
  * No momento o programa só cria um arquivo "blablabla.txt" e
  * escreve algum texto.
- * 
+ *
  * O objetivo dessa tela é fazer o passo-a-passo:
  * 	-Carregar todas as classes;
  * 	-Carregar todos os arquivos de uma pasta específica;
@@ -21,21 +21,41 @@ import java.util.ArrayList;
 //import exception (Necessária para a biblioteca de arquivos)
 import java.io.IOException;
 
-//importando biblioteca de arquivos 
+//importando biblioteca de leitura de arquivos
+import java.io.File;
+
+//importando biblioteca de escrita de arquivos
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
 
 public class Main{
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
-		
+
+		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
+
+		File f = new File(pastaImagens); //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
+		ArrayList<String> nomesArquivos = new ArrayList<String>(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
+		System.out.println(nomesArquivos.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
+
+		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
+
+		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
+			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
+
+			System.out.print(imagens.get(x).getNome()+"\t\t - "); //exemplo de uso para retornar o nome do arquivo
+			System.out.println(imagens.get(x).getTamanhoBytes()+" Bytes"); //exemplo de uso para retornar o tamanho em bytes do arquivo
+		}
+
+		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
+
 		FileWriter arquivo = new FileWriter("blablabla.txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
-		
+
 		gravarArquivo.println("blebleble!"); //Grava uma linha no arquivo e desce para outra linha (Não consegui inserir \n, quem puder verificar, é de boa ajuda...)
 		gravarArquivo.println("oi!");
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
-		
+
 	}
-	
+
 }
