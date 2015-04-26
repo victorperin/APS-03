@@ -1,5 +1,7 @@
 ##APS - 3° Semestre (Ciência da Computação)
 
+[![Join the chat at https://gitter.im/victorperin/APS-03](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/victorperin/APS-03?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Depois eu coloco mais coisas aqui...
 
 ###Aprendendo a usar o GitHub
