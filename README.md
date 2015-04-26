@@ -23,3 +23,11 @@ Objetos - Sim, tem que saber usar...
 
 ##Onde estudar:
 [64 Exercícios](https://github.com/victorperin/Exercicios-Java) - Procurem pelos exercícios de nível 6 e os exercícios da segunda lista. (Se possível chegue ao fim, pois tem exercícios realmente bons...)
+
+
+
+##Métodos a implementar:
+ - Shell Sort - Gabi
+ - Insertion Sort - Henrique
+ - Bubble Sort - Matheus
+ - Numsei - Sérgio
