@@ -40,6 +40,8 @@ public class Main{
 
 		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
 
+		System.out.println("Arquivos não ordenados (Para ver os arquivos ordenados abra Blablabla):");
+
 		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
 
@@ -49,13 +51,13 @@ public class Main{
 
 		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
 			//favor retornar o ArrayList das imagens ordenadas
-			ArrayList<Imagem> imagensOrdenadas = Sorts.exemploSort(imagens); //é só colocar essa linha para cada método de sort
+			ArrayList<Imagem> imagensOrdenadas = Sorts.selectionSort(imagens); //é só colocar essa linha para cada método de sort
 
 		FileWriter arquivo = new FileWriter("blablabla.txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 		for(int x=0;x<imagens.size();x++){
-			gravarArquivo.println(imagensOrdenadas.get(x).getNome());
+			gravarArquivo.println(imagensOrdenadas.get(x).getNome()+"\t\t"+imagensOrdenadas.get(x).getTamanhoBytes()+" Bytes");
 		}
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
 
