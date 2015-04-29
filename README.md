@@ -27,10 +27,10 @@ Objetos - Sim, tem que saber usar...
 
 
 ##Métodos:
- | Método de Sort  | Responsável | Estado |
- | :---------------: | :---------------: | :---------------: |
- | Shell | Gabi | ok |
- | Selection | Victor | ok |
- | Insertion | Henrique | editando |
- | Bubble | Matheus | editando |
- | Numsei | Sérgio | escolhendo |
+  Método de Sort  | Responsável | Estado 
+  ------------ | ------------- | ------------- 
+  Shell | Gabi | ok 
+  Selection | Victor | ok 
+  Insertion | Henrique | editando 
+  Bubble | Matheus | editando 
+  Numsei | Sérgio | escolhendo 
