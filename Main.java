@@ -31,6 +31,7 @@ import java.io.FileWriter;
 
 public class Main{
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
+		float tempoInicio;
 
 		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
 
@@ -46,7 +47,6 @@ public class Main{
 		}
 
 
-		float tempoInicio;
 		//selection sort -- copie toda este código para usar outro método
 		tempoInicio = System.nanoTime();
 		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens)); //é só colocar essa linha para cada método de sort
