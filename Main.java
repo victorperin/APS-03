@@ -36,7 +36,7 @@ public class Main{
 
 		File f = new File(pastaImagens); //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
 		ArrayList<String> nomesArquivos = new ArrayList<String>(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
-		System.out.println(nomesArquivos.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
+		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+nomesArquivos.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 
 		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
 
@@ -45,12 +45,16 @@ public class Main{
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
 		}
 
-		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
-		//favor retornar o ArrayList das imagens ordenadas
 
+		float tempoInicio;
+		//selection sort -- copie toda este código para usar outro método
+		tempoInicio = System.nanoTime();
 		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens)); //é só colocar essa linha para cada método de sort
-		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
+		System.out.printf("Tempo gasto SelectionSort:\t %.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 
+		tempoInicio = System.nanoTime();
+		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
+		System.out.printf("Tempo gasto ShellSort:\t\t %.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
@@ -59,7 +63,7 @@ public class Main{
 
 		for(int x=0;x<imagens.size();x++){
 			gravarArquivo.print(imagens.get(x).getNome());
-			gravarArquivo.println("\t\t"+imagens.get(x).getTamanhoBytes()+" Bytes");
+			gravarArquivo.println("\t"+imagens.get(x).getTamanhoBytes()+" Bytes");
 		}
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
 	}
