@@ -59,9 +59,9 @@ public class Sorts{
 			  
 			  // comparando os elementos
 			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
-				  imagens.set(j) = imagens.get(j - gap); // trocando...
+				  imagens.set(j, imagens.get(j - gap)); // trocando...
 			  }
-			  imagens.set(j) = tempVal;
+			  imagens.set(j, tempVal); // trocando...
 		  }
 	  }
 	  return imagens;
