@@ -44,9 +44,6 @@ public class Main{
 
 		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
-
-			System.out.print(imagens.get(x).getNome()+"\t\t - "); //exemplo de uso para retornar o nome do arquivo
-			System.out.println(imagens.get(x).getTamanhoBytes()+" Bytes"); //exemplo de uso para retornar o tamanho em bytes do arquivo
 		}
 
 		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
