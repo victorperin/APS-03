@@ -46,17 +46,22 @@ public class Main{
 		}
 
 		//o código que linka o código de cada classe de ordenação de cada um virá aqui!
-			//favor retornar o ArrayList das imagens ordenadas
-			ArrayList<Imagem> imagensOrdenadas = Sorts.selectionSort(imagens); //é só colocar essa linha para cada método de sort
+		//favor retornar o ArrayList das imagens ordenadas
 
-		FileWriter arquivo = new FileWriter("blablabla.txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
+		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens)); //é só colocar essa linha para cada método de sort
+		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
+
+	}
+
+	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
+		FileWriter arquivo = new FileWriter(nomeArquivo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 		for(int x=0;x<imagens.size();x++){
-			gravarArquivo.println(imagensOrdenadas.get(x).getNome()+"\t\t"+imagensOrdenadas.get(x).getTamanhoBytes()+" Bytes");
+			gravarArquivo.print(imagens.get(x).getNome());
+			gravarArquivo.println("\t\t"+imagens.get(x).getTamanhoBytes()+" Bytes");
 		}
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
-
 	}
 
 }
