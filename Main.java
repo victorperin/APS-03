@@ -31,7 +31,7 @@ import java.io.FileWriter;
 
 public class Main{
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
-		float tempoInicio;
+		float tempoInicio=System.nanoTime();
 
 		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
 
@@ -45,16 +45,21 @@ public class Main{
 		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
 		}
-
+		salvarArquivo("ArquivosDesordenados.txt",imagens);
+		float tempoCarregarArquivos = (System.nanoTime() - tempoInicio)/1000000000;
+		System.out.printf("Tempo para carregar os arquivos (desordenado): \t%.9f segundos.\n",tempoCarregarArquivos);
 
 		//selection sort -- copie toda este código para usar outro método
 		tempoInicio = System.nanoTime();
 		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens)); //é só colocar essa linha para cada método de sort
-		System.out.printf("Tempo gasto SelectionSort:\t %.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		//fim selection sort
 
+		//shell sort
 		tempoInicio = System.nanoTime();
 		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
-		System.out.printf("Tempo gasto ShellSort:\t\t %.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		//fim shell sort
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
