@@ -40,7 +40,6 @@ public class Main{
 
 		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
 
-		System.out.println("Arquivos não ordenados (Para ver os arquivos ordenados abra Blablabla):");
 
 		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
