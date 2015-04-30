@@ -31,13 +31,32 @@ import java.io.FileWriter;
 
 public class Main{
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
+		Scanner entrada = new Scanner(System.in);
+
 		float tempoInicio=System.nanoTime();
 
 		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
 
-		File f = new File(pastaImagens); //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
-		ArrayList<String> nomesArquivos = new ArrayList<String>(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+nomesArquivos.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
+		File f; //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
+		ArrayList<String> nomesArquivos = new ArrayList<String>();
+		boolean erro;
+		do{
+			erro=false;
+			f = new File(pastaImagens);
+			try {
+					nomesArquivos.addAll(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
+				}
+			catch(NullPointerException e){
+				System.out.println("Erro, não existem arquivos na pasta "+ pastaImagens);
+
+				System.out.print("Digite outra pasta para a pasta imagens:");
+				pastaImagens = entrada.nextLine();
+				erro = true;
+			}
+		}while(erro==true);
+
+
 
 		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
 
