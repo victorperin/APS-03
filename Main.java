@@ -64,7 +64,7 @@ public class Main{
 		//insertion sort
 		tempoInicio = System.nanoTime();
 		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens));
-		System.out.printf("Tempo gasto ShellSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//insertion sort
 	}
 
