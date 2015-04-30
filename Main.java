@@ -30,6 +30,7 @@ import java.io.FileWriter;
 
 
 public class Main{
+	public static int arquivosNaoCarregados = 0;
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
 		Scanner entrada = new Scanner(System.in);
 
@@ -37,7 +38,6 @@ public class Main{
 
 		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
 
-		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+nomesArquivos.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 		File f; //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
 		ArrayList<String> nomesArquivos = new ArrayList<String>();
 		boolean erro;
@@ -60,10 +60,13 @@ public class Main{
 
 		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
 
+		if(pastaImagens.substring(pastaImagens.length() - 1)!="/")pastaImagens += "/"; //checa se a pastaImagens tem uma "/" no final, se não tiver, adiciona
 
 		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
 		}
+
+		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(nomesArquivos.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 		salvarArquivo("ArquivosDesordenados.txt",imagens);
 		float tempoCarregarArquivos = (System.nanoTime() - tempoInicio)/1000000000;
 		System.out.printf("Tempo para carregar os arquivos (desordenado): \t%.9f segundos.\n",tempoCarregarArquivos);
