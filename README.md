@@ -31,6 +31,6 @@ Objetos - Sim, tem que saber usar...
   ------------ | ------------- | ------------- 
   Shell | Gabi | ok 
   Selection | Victor | ok 
-  Insertion | Henrique | editando 
+  Insertion | Henrique | ok 
   Bubble | Matheus | editando 
   Numsei | Sérgio | escolhendo 
