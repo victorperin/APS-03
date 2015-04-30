@@ -66,6 +66,12 @@ public class Main{
 		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens));
 		System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//insertion sort
+		
+		//bubble sort
+		tempoInicio = System.nanoTime();
+		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens));
+		System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		//bubble sort
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
