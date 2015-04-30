@@ -66,4 +66,24 @@ public class Sorts{
 	  }
 	  return imagens;
 }
+
+  public static ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens){
+    for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
+      int menor = fixo;
+
+      for (int i = menor + 1; i < imagens.size(); i++){
+        if (imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes()){
+    		    menor = i;
+        }
+      }
+      if (menor != fixo) {
+      	// Troca
+        Imagem t = imagens.get(fixo);
+        imagens.set(fixo,imagens.get(menor));
+        imagens.set(menor,t);
+      }
+    }
+    return imagens;
+  }
+  
 }
