@@ -60,6 +60,12 @@ public class Main{
 		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
 		System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//fim shell sort
+		
+		//insertion sort
+		tempoInicio = System.nanoTime();
+		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens));
+		System.out.printf("Tempo gasto ShellSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		//insertion sort
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
