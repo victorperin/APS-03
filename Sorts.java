@@ -67,7 +67,7 @@ public class Sorts{
 	  return imagens;
 }
 
-  public static ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
       int menor = fixo;
 
