@@ -66,6 +66,28 @@ public class Sorts{
 	  }
 	  return imagens;
 }
+  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens){
+  {
+        imagens.get(0).getTamanhoBytes();
+
+        boolean troca = true;
+        Imagem aux;
+        while (troca) {
+            troca = false;
+            for (int i = 0; i < imagens.size() - 1; i++)
+            {
+                if (imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes() )
+                {
+                   aux = imagens.get(i);
+                   imagens.set(i,imagens.get(i + 1));
+                   imagens.set(i + 1,aux);
+                   troca = true;
+                }
+            }
+        }
+  }
+    return imagens;
+  }
 
   public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
