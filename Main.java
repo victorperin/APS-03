@@ -51,7 +51,7 @@ public class Main{
 
 		//selection sort -- copie toda este código para usar outro método
 		tempoInicio = System.nanoTime();
-		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens)); //é só colocar essa linha para cada método de sort
+		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens,1)); //é só colocar essa linha para cada método de sort
 		System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//fim selection sort
 
@@ -60,18 +60,39 @@ public class Main{
 		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
 		System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//fim shell sort
-		
+
 		//insertion sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens));
+		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens,1));
 		System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//insertion sort
-		
+
 		//bubble sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens));
+		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens,1));
 		System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//bubble sort
+
+		//ordenações por nome da imagem
+		System.out.println("\nOrdenações por nome do arquivo:");
+			//selection sort - Nome Imagem
+			tempoInicio = System.nanoTime();
+			salvarArquivo("SelectionSort - Por Nome.txt",Sorts.selectionSort(imagens,2));
+			System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//selection sort - Nome Imagem
+
+			//insertion sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("InsertionSort - Por Nome.txt",Sorts.insertionSort(imagens,2));
+			System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//insertion sort
+
+			//bubble sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("BubbleSort - Por Nome.txt",Sorts.bubbleSort(imagens,2));
+			System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//bubble sort
+		//ordenações por nome da imagem
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{

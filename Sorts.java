@@ -9,6 +9,12 @@
  * A classe é um conjunto de Métodos de Sort:
  *  -Recebe o ArrayList<imagem> imagens;
  *  -Retorna o ArrayList<imagem> imagensOrdenadas;
+ *
+ *
+ * Obs:
+ * int tipo
+ *  - 1: tamanhoBytes
+ *  - 2: Nome do Arquivo
  ************************************************************************/
  import java.util.Arrays;
  import java.util.ArrayList;
@@ -24,39 +30,43 @@ public class Sorts{
     return imagens;
   }
 
-  public static ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens){
-    for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
-      int menor = fixo;
+  public static ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens, int tipo){
 
-      for (int i = menor + 1; i < imagens.size(); i++){
-        if (imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes()){
-    		    menor = i;
+
+      for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
+        int menor = fixo;
+        for (int i = menor + 1; i < imagens.size(); i++){
+          boolean checarMenor;
+          if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
+          else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+          if(checarMenor){
+              menor = i;
+          }
+        }
+        if (menor != fixo) {
+          // Troca
+          Imagem t = imagens.get(fixo);
+          imagens.set(fixo,imagens.get(menor));
+          imagens.set(menor,t);
         }
       }
-      if (menor != fixo) {
-      	// Troca
-        Imagem t = imagens.get(fixo);
-        imagens.set(fixo,imagens.get(menor));
-        imagens.set(menor,t);
-      }
-    }
     return imagens;
   }
 
   //coloque outros métodos aqui
-  
+
   // Shellsort GABI
   public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens){
 	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
 	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
-		  
+
 		  // laço de repetição para comparar e organizar os valores
 		  for (int i = gap; i < imagens.size(); i++){ // percorrendo a lista
 
 			  Imagem tempVal = imagens.get(i); // recebe o valor temporário que vai ser comparado
-			  
+
 			  int j; // variável para procurar o 2o valor a ser comparado
-			  
+
 			  // comparando os elementos
 			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
 				  imagens.set(j, imagens.get(j - gap)); // trocando...
@@ -66,7 +76,7 @@ public class Sorts{
 	  }
 	  return imagens;
 }
-  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens,int tipo){
   {
         imagens.get(0).getTamanhoBytes();
 
@@ -76,7 +86,10 @@ public class Sorts{
             troca = false;
             for (int i = 0; i < imagens.size() - 1; i++)
             {
-                if (imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes() )
+                boolean checarMenor;
+                if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(i),imagens.get(i + 1));
+                else checarMenor = imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes();
+                if (checarMenor)
                 {
                    aux = imagens.get(i);
                    imagens.set(i,imagens.get(i + 1));
@@ -89,12 +102,15 @@ public class Sorts{
     return imagens;
   }
 
-  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens, int tipo){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
       int menor = fixo;
 
       for (int i = menor + 1; i < imagens.size(); i++){
-        if (imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes()){
+        boolean checarMenor;
+        if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
+        else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+        if (checarMenor){
     		    menor = i;
         }
       }
@@ -107,5 +123,19 @@ public class Sorts{
     }
     return imagens;
   }
-  
+
+
+  /*****************************************************************************
+   * Compara dois objetos Imagem com relação ao nome do arquivo.
+   * Se o arquivo segundo arquivo deveria estar organizado antes do primeiro,
+   * O método retorna true,
+   * se não, retorna false.
+   ****************************************************************************/
+  public static boolean checarSeArquivoEhAntes(Imagem primeiro, Imagem segundo){
+    int compare = primeiro.getNome().compareTo(segundo.getNome());
+    //System.out.println(primeiro.getNome()+" "+segundo.getNome());
+    if(compare > 0) return true;
+    else return false;
+  }
+
 }
