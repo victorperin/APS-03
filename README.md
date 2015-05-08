@@ -33,4 +33,4 @@ Objetos - Sim, tem que saber usar...
   Selection | Victor | ok 
   Insertion | Henrique | ok 
   Bubble | Matheus | editando 
-  Numsei | Sérgio | escolhendo 
+  Numsei | Sérgio | ainda não fez, victor ajudando 
