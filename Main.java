@@ -75,30 +75,33 @@ public class Main{
 		salvarArquivo("ArquivosDesordenados.txt",tempoInicio,imagens);
 		System.out.println();
 
-		//selection sort -- copie toda este código para usar outro método
-		System.out.print("Tempo gasto SelectionSort:\t\t\t");
-		salvarArquivo("SelectionSort.txt",System.nanoTime(),Sorts.selectionSort(imagens,1)); //é só colocar essa linha para cada método de sort
-		//fim selection sort
+		//ordenações por tamanho da imagem
+			//selection sort -- copie toda este código para usar outro método
+			System.out.print("Tempo gasto SelectionSort:\t\t\t");
+			salvarArquivo("SelectionSort.txt",System.nanoTime(),Sorts.selectionSort(imagens,1)); //é só colocar essa linha para cada método de sort
+			//fim selection sort
 
-		//shell sort
-		System.out.print("Tempo gasto ShellSort:\t\t\t\t");
-		salvarArquivo("ShellSort.txt",System.nanoTime(),Sorts.shellSort(imagens,1));
-		//fim shell sort
+			//shell sort
+			System.out.print("Tempo gasto ShellSort:\t\t\t\t");
+			salvarArquivo("ShellSort.txt",System.nanoTime(),Sorts.shellSort(imagens,1));
+			//fim shell sort
 
-		//insertion sort
-		System.out.print("Tempo gasto InsertionSort:\t\t\t");
-		salvarArquivo("InsertionSort.txt",System.nanoTime(),Sorts.insertionSort(imagens,1));
-		//insertion sort
+			//insertion sort
+			System.out.print("Tempo gasto InsertionSort:\t\t\t");
+			salvarArquivo("InsertionSort.txt",System.nanoTime(),Sorts.insertionSort(imagens,1));
+			//insertion sort
 
-		//bubble sort
-		System.out.print("Tempo gasto BubbleSort:\t\t\t\t");
-		salvarArquivo("BubbleSort.txt",System.nanoTime(),Sorts.bubbleSort(imagens,1));
-		//bubble sort
+			//bubble sort
+			System.out.print("Tempo gasto BubbleSort:\t\t\t\t");
+			salvarArquivo("BubbleSort.txt",System.nanoTime(),Sorts.bubbleSort(imagens,1));
+			//bubble sort
 
-		//Ancor sort (método próprio)
-		System.out.print("Tempo gasto AncorSort:\t\t\t\t");
-		salvarArquivo("AncorSort.txt",System.nanoTime(),Sorts.ancorSort(imagens,1));
-		//Ancor sort (método próprio)
+			//Ancor sort (método próprio)
+			System.out.print("Tempo gasto AncorSort:\t\t\t\t");
+			salvarArquivo("AncorSort.txt",System.nanoTime(),Sorts.ancorSort(imagens,1));
+			//Ancor sort (método próprio)
+		//ordenações por tamanho da imagem
+
 
 
 		//ordenações por nome da imagem
