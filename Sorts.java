@@ -99,12 +99,15 @@ public class Sorts{
     return imagens;
   }
 
-  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens, int tipo){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
       int menor = fixo;
 
       for (int i = menor + 1; i < imagens.size(); i++){
-        if (imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes()){
+        boolean checarMenor;
+        if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
+        else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+        if (checarMenor){
     		    menor = i;
         }
       }
