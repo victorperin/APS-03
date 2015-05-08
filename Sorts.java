@@ -76,7 +76,7 @@ public class Sorts{
 	  }
 	  return imagens;
 }
-  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens,int tipo){
   {
         imagens.get(0).getTamanhoBytes();
 
@@ -86,7 +86,10 @@ public class Sorts{
             troca = false;
             for (int i = 0; i < imagens.size() - 1; i++)
             {
-                if (imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes() )
+                boolean checarMenor;
+                if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(i),imagens.get(i + 1));
+                else checarMenor = imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes();
+                if (checarMenor)
                 {
                    aux = imagens.get(i);
                    imagens.set(i,imagens.get(i + 1));

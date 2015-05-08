@@ -69,7 +69,7 @@ public class Main{
 
 		//bubble sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens));
+		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens,1));
 		System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//bubble sort
 
@@ -86,6 +86,12 @@ public class Main{
 			salvarArquivo("InsertionSort - Por Nome.txt",Sorts.insertionSort(imagens,2));
 			System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 			//insertion sort
+
+			//bubble sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("BubbleSort - Por Nome.txt",Sorts.bubbleSort(imagens,2));
+			System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//bubble sort
 		//ordenações por nome da imagem
 	}
 
