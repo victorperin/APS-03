@@ -137,10 +137,12 @@ public class Main{
 	}
 
 	private static void salvarArquivo(String nomeArquivo,long tempoInicio, ArrayList<Imagem> imagens)  throws IOException{
+		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
+
 		FileWriter arquivo = new FileWriter(nomeArquivo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
-		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
+
 		gravarArquivo.printf("Tempo gasto: %.9f segundos.", tempoGasto);
 		gravarArquivo.println();
 		gravarArquivo.println();
