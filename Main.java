@@ -144,8 +144,8 @@ public class Main{
 		System.out.printf("%.9f segundos.\n",tempoGasto);
 
 		for(int x=0;x<imagens.size();x++){
-			gravarArquivo.print(imagens.get(x).getNome());
-			gravarArquivo.println("\t"+imagens.get(x).getTamanhoBytes()+" Bytes");
+			gravarArquivo.printf("%9d Bytes",imagens.get(x).getTamanhoBytes());
+			gravarArquivo.println("\t\t"+imagens.get(x).getNome());
 		}
 
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
