@@ -127,12 +127,15 @@ public class Sorts{
     //AncorSort
     //By: Todo mundo
     //Objective: Sort próprio, obrigatório na APS
-    public static ArrayList<Imagem> ancorSort(ArrayList<Imagem> imagens){
+    public static ArrayList<Imagem> ancorSort(ArrayList<Imagem> imagens,int tipo){
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
         int menor = fixo;
 
         for (int i = menor + 1; i < imagens.size(); i++){
-          if (imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes()){
+          boolean checarMenor;
+          if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
+          else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+          if (checarMenor){
               menor = i;
           }
         }
@@ -144,7 +147,7 @@ public class Sorts{
         }
       }
       return imagens;
-
+    }
 
   /*****************************************************************************
    * Compara dois objetos Imagem com relação ao nome do arquivo.
