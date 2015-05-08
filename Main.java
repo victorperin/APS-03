@@ -52,6 +52,7 @@ public class Main{
 
 				System.out.print("Digite outra pasta para a pasta imagens:");
 				pastaImagens = entrada.nextLine();
+				if(pastaImagens.equals("")) System.exit(0);
 				erro = true;
 			}
 		}while(erro==true);
