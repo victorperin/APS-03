@@ -141,6 +141,7 @@ public class Main{
 		gravarArquivo.printf("Tempo gasto: %.9f segundos.", tempoGasto);
 		gravarArquivo.println();
 		gravarArquivo.println();
+		gravarArquivo.println("Arquivos ordenados:");
 		System.out.printf("%.9f segundos.\n",tempoGasto);
 
 		for(int x=0;x<imagens.size();x++){
