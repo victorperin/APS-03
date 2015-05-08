@@ -133,13 +133,14 @@ public class Main{
 
 			//Ancor sort (método próprio)
 		//ordenações por nome da imagem
-
+		System.out.print("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
 	}
 
 	private static void salvarArquivo(String nomeArquivo,long tempoInicio, ArrayList<Imagem> imagens)  throws IOException{
 		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
 
-		FileWriter arquivo = new FileWriter(nomeArquivo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
+		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
+		FileWriter arquivo = new FileWriter("relatorios/"+nomeArquivo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 
