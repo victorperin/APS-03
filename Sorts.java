@@ -108,10 +108,10 @@ public class Sorts{
     return imagens;
   }
 
-  //OwnSort
-  //By: Victor Perin
+  //AncorSort
+  //By: Todo mundo
   //Objective: Sort próprio, obrigatório na APS
-  public static ArrayList<Imagem> ownSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> ancorSort(ArrayList<Imagem> imagens){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
       int menor = fixo;
 
