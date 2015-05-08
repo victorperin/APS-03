@@ -74,33 +74,68 @@ public class Main{
 
 		//selection sort -- copie toda este código para usar outro método
 		tempoInicio = System.nanoTime();
-		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens)); //é só colocar essa linha para cada método de sort
+		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens,1)); //é só colocar essa linha para cada método de sort
 		System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//fim selection sort
 
 		//shell sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
+		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens,1));
 		System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//fim shell sort
 
 		//insertion sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens));
+		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens,1));
 		System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//insertion sort
 
 		//bubble sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens));
+		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens,1));
 		System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//bubble sort
 
 		//Ancor sort (método próprio)
 		tempoInicio = System.nanoTime();
-		salvarArquivo("AncorSort.txt",Sorts.ancorSort(imagens));
+		salvarArquivo("AncorSort.txt",Sorts.ancorSort(imagens,1));
 		System.out.printf("Tempo gasto AncorSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//Ancor sort (método próprio)
+
+
+		//ordenações por nome da imagem
+		System.out.println("\nOrdenações por nome do arquivo:");
+			//selection sort - Nome Imagem
+			tempoInicio = System.nanoTime();
+			salvarArquivo("SelectionSort - Por Nome.txt",Sorts.selectionSort(imagens,2));
+			System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//selection sort - Nome Imagem
+
+			//insertion sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("InsertionSort - Por Nome.txt",Sorts.insertionSort(imagens,2));
+			System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//insertion sort
+
+			//bubble sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("BubbleSort - Por Nome.txt",Sorts.bubbleSort(imagens,2));
+			System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//bubble sort
+
+			//Ancor sort (método próprio)
+			tempoInicio = System.nanoTime();
+			salvarArquivo("AncorSort - Por Nome.txt",Sorts.ancorSort(imagens,2));
+			System.out.printf("Tempo gasto AncorSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//Ancor sort (método próprio)
+
+			//shell sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("ShellSort - Por Nome.txt",Sorts.shellSort(imagens,2));
+			System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//fim shell sort
+		//ordenações por nome da imagem
+
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
