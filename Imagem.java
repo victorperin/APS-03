@@ -29,7 +29,6 @@ public class Imagem{
 			this.nomeArquivo = arquivo.getName(); //define nomeArquivo como o nome do arquivo carregado (teste.jpg)
 			this.tamanhoBytes =arquivo.length(); //define tamanhoBytes como o tamanho do arquivos em bytes.
 		}else if(!arquivo.isFile()){ //caso o arquivo seja um pasta, ele mostra esse erro.
-			System.out.println("Pasta \""+arquivo.getName()+"\" não está nos cálculos, pois não é possivel carregar o tamanho de uma pasta.");
 			Main.arquivosNaoCarregados++;
 		}else{	//caso o arquivo não exista, ele mostra esse erro.
 			System.out.println("Arquivo não pode ser carregado.");
