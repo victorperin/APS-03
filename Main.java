@@ -28,13 +28,15 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
+//biblioteca usada para randomizar o arquivo
+import java.util.Collections;
 
 public class Main{
 	public static int arquivosNaoCarregados = 0;
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
 		Scanner entrada = new Scanner(System.in);
 
-		float tempoInicio=System.nanoTime();
+		long tempoInicio=System.nanoTime();
 
 		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
 
@@ -66,86 +68,86 @@ public class Main{
 		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
 			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
 		}
+		Collections.shuffle(imagens);//Ramdomiza ordem dos arquivos
 
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(nomesArquivos.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
-		salvarArquivo("ArquivosDesordenados.txt",imagens);
-		float tempoCarregarArquivos = (System.nanoTime() - tempoInicio)/1000000000;
-		System.out.printf("Tempo para carregar os arquivos (desordenado): \t%.9f segundos.\n",tempoCarregarArquivos);
+		System.out.print("Tempo para carregar os arquivos e desordena-los de forma aleatória: ");
+		salvarArquivo("ArquivosDesordenados.txt",tempoInicio,imagens);
+		System.out.println();
 
 		//selection sort -- copie toda este código para usar outro método
-		tempoInicio = System.nanoTime();
-		salvarArquivo("SelectionSort.txt",Sorts.selectionSort(imagens,1)); //é só colocar essa linha para cada método de sort
-		System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.print("Tempo gasto SelectionSort:\t\t\t");
+		salvarArquivo("SelectionSort.txt",System.nanoTime(),Sorts.selectionSort(imagens,1)); //é só colocar essa linha para cada método de sort
 		//fim selection sort
 
 		//shell sort
-		tempoInicio = System.nanoTime();
-		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens,1));
-		System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.print("Tempo gasto ShellSort:\t\t\t\t");
+		salvarArquivo("ShellSort.txt",System.nanoTime(),Sorts.shellSort(imagens,1));
 		//fim shell sort
 
 		//insertion sort
-		tempoInicio = System.nanoTime();
-		salvarArquivo("InsertionSort.txt",Sorts.insertionSort(imagens,1));
-		System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.print("Tempo gasto InsertionSort:\t\t\t");
+		salvarArquivo("InsertionSort.txt",System.nanoTime(),Sorts.insertionSort(imagens,1));
 		//insertion sort
 
 		//bubble sort
-		tempoInicio = System.nanoTime();
-		salvarArquivo("BubbleSort.txt",Sorts.bubbleSort(imagens,1));
-		System.out.printf("Tempo gasto BubbleSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.print("Tempo gasto BubbleSort:\t\t\t\t");
+		salvarArquivo("BubbleSort.txt",System.nanoTime(),Sorts.bubbleSort(imagens,1));
 		//bubble sort
 
 		//Ancor sort (método próprio)
-		tempoInicio = System.nanoTime();
-		salvarArquivo("AncorSort.txt",Sorts.ancorSort(imagens,1));
-		System.out.printf("Tempo gasto AncorSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		System.out.print("Tempo gasto AncorSort:\t\t\t\t");
+		salvarArquivo("AncorSort.txt",System.nanoTime(),Sorts.ancorSort(imagens,1));
 		//Ancor sort (método próprio)
 
 
 		//ordenações por nome da imagem
 		System.out.println("\nOrdenações por nome do arquivo:");
 			//selection sort - Nome Imagem
-			tempoInicio = System.nanoTime();
-			salvarArquivo("SelectionSort - Por Nome.txt",Sorts.selectionSort(imagens,2));
-			System.out.printf("Tempo gasto SelectionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			System.out.print("Tempo gasto SelectionSort:\t\t\t");
+			salvarArquivo("SelectionSort - Por Nome.txt",System.nanoTime(),Sorts.selectionSort(imagens,2));
 			//selection sort - Nome Imagem
 
 			//shell sort
-			tempoInicio = System.nanoTime();
-			salvarArquivo("ShellSort - Por Nome.txt",Sorts.shellSort(imagens,2));
-			System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			System.out.print("Tempo gasto ShellSort:\t\t\t\t");
+			salvarArquivo("ShellSort - Por Nome.txt",System.nanoTime(),Sorts.shellSort(imagens,2));
 			//fim shell sort
 
 			//insertion sort
-			tempoInicio = System.nanoTime();
-			salvarArquivo("InsertionSort - Por Nome.txt",Sorts.insertionSort(imagens,2));
-			System.out.printf("Tempo gasto InsertionSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			System.out.print("Tempo gasto InsertionSort:\t\t\t");
+			salvarArquivo("InsertionSort - Por Nome.txt",System.nanoTime(),Sorts.insertionSort(imagens,2));
 			//insertion sort
 
 			//bubble sort
-			tempoInicio = System.nanoTime();
-			salvarArquivo("BubbleSort - Por Nome.txt",Sorts.bubbleSort(imagens,2));
-			System.out.printf("Tempo gasto BubbleSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			System.out.print("Tempo gasto BubbleSort:\t\t\t\t");
+			salvarArquivo("BubbleSort - Por Nome.txt",System.nanoTime(),Sorts.bubbleSort(imagens,2));
+
 			//bubble sort
 
 			//Ancor sort (método próprio)
-			tempoInicio = System.nanoTime();
-			salvarArquivo("AncorSort - Por Nome.txt",Sorts.ancorSort(imagens,2));
-			System.out.printf("Tempo gasto AncorSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			System.out.print("Tempo gasto AncorSort:\t\t\t\t");
+			salvarArquivo("AncorSort - Por Nome.txt",System.nanoTime(),Sorts.ancorSort(imagens,2));
+
 			//Ancor sort (método próprio)
 		//ordenações por nome da imagem
 
 	}
 
-	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
+	private static void salvarArquivo(String nomeArquivo,long tempoInicio, ArrayList<Imagem> imagens)  throws IOException{
 		FileWriter arquivo = new FileWriter(nomeArquivo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
+
+		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
+		gravarArquivo.printf("Tempo gasto: %.9f segundos.", tempoGasto);
+		gravarArquivo.println();
+		gravarArquivo.println();
+		System.out.printf("%.9f segundos.\n",tempoGasto);
 
 		for(int x=0;x<imagens.size();x++){
 			gravarArquivo.print(imagens.get(x).getNome());
 			gravarArquivo.println("\t"+imagens.get(x).getTamanhoBytes()+" Bytes");
 		}
+
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
 	}
 
