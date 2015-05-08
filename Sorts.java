@@ -56,7 +56,7 @@ public class Sorts{
   //coloque outros métodos aqui
 
   // Shellsort GABI
-  public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens){
+  public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens,int tipo){
 	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
 	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
 
@@ -67,10 +67,17 @@ public class Sorts{
 
 			  int j; // variável para procurar o 2o valor a ser comparado
 
-			  // comparando os elementos
-			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
-				  imagens.set(j, imagens.get(j - gap)); // trocando...
-			  }
+        if(tipo==2){
+          // comparando os elementos por nome
+          for (j = i; j >= gap && checarSeArquivoEhAntes(imagens.get(j - gap),tempVal); j -= gap){
+            imagens.set(j, imagens.get(j - gap)); // trocando...
+          }
+        }else{
+  			  // comparando os elementos por tamanho
+  			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
+  				  imagens.set(j, imagens.get(j - gap)); // trocando...
+  			  }
+        }
 			  imagens.set(j, tempVal); // trocando...
 		  }
 	  }

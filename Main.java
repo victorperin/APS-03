@@ -57,7 +57,7 @@ public class Main{
 
 		//shell sort
 		tempoInicio = System.nanoTime();
-		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens));
+		salvarArquivo("ShellSort.txt",Sorts.shellSort(imagens,1));
 		System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//fim shell sort
 
@@ -105,6 +105,12 @@ public class Main{
 			salvarArquivo("AncorSort - Por Nome.txt",Sorts.ancorSort(imagens,2));
 			System.out.printf("Tempo gasto AncorSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 			//Ancor sort (método próprio)
+
+			//shell sort
+			tempoInicio = System.nanoTime();
+			salvarArquivo("ShellSort - Por Nome.txt",Sorts.shellSort(imagens,2));
+			System.out.printf("Tempo gasto ShellSort:\t\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+			//fim shell sort
 		//ordenações por nome da imagem
 
 	}
