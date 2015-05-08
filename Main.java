@@ -73,11 +73,11 @@ public class Main{
 		System.out.printf("Tempo gasto BubbleSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
 		//bubble sort
 
-		//own sort
+		//Ancor sort (método próprio)
 		tempoInicio = System.nanoTime();
-		salvarArquivo("OwnSort.txt",Sorts.ownSort(imagens));
-		System.out.printf("Tempo gasto OwnSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
-		//own sort
+		salvarArquivo("AncorSort.txt",Sorts.ancorSort(imagens));
+		System.out.printf("Tempo gasto AncorSort:\t\t\t%.9f segundos.\n",(System.nanoTime() - tempoInicio)/1000000000);
+		//Ancor sort (método próprio)
 	}
 
 	private static void salvarArquivo(String nomeArquivo, ArrayList<Imagem> imagens)  throws IOException{
