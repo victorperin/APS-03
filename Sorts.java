@@ -157,7 +157,6 @@ public class Sorts{
    ****************************************************************************/
   public static boolean checarSeArquivoEhAntes(Imagem primeiro, Imagem segundo){
     int compare = primeiro.getNome().compareTo(segundo.getNome());
-    //System.out.println(primeiro.getNome()+" "+segundo.getNome());
     if(compare > 0) return true;
     else return false;
   }
