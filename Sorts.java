@@ -131,10 +131,10 @@ public class Sorts{
     return imagens;
   }
 
-    //AncorSort
+    //AnchorSort
     //By: Todo mundo
     //Objective: Sort próprio, obrigatório na APS
-    public static ArrayList<Imagem> ancorSort(ArrayList<Imagem> imagens,int tipo){
+    public static ArrayList<Imagem> anchorSort(ArrayList<Imagem> imagens,int tipo){
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
         int menor = fixo;
 

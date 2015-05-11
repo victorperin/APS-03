@@ -96,10 +96,10 @@ public class Main{
 			salvarArquivo("BubbleSort.txt",System.nanoTime(),Sorts.bubbleSort(imagens,1));
 			//bubble sort
 
-			//Ancor sort (método próprio)
-			System.out.print("Tempo gasto AncorSort:\t\t\t\t");
-			salvarArquivo("AncorSort.txt",System.nanoTime(),Sorts.ancorSort(imagens,1));
-			//Ancor sort (método próprio)
+			//Anchor sort (método próprio)
+			System.out.print("Tempo gasto AnchorSort:\t\t\t\t");
+			salvarArquivo("AnchorSort.txt",System.nanoTime(),Sorts.anchorSort(imagens,1));
+			//Anchor sort (método próprio)
 		//ordenações por tamanho da imagem
 
 
@@ -127,11 +127,11 @@ public class Main{
 
 			//bubble sort
 
-			//Ancor sort (método próprio)
-			System.out.print("Tempo gasto AncorSort:\t\t\t\t");
-			salvarArquivo("AncorSort - Por Nome.txt",System.nanoTime(),Sorts.ancorSort(imagens,2));
+			//Anchor sort (método próprio)
+			System.out.print("Tempo gasto AnchorSort:\t\t\t\t");
+			salvarArquivo("AnchorSort - Por Nome.txt",System.nanoTime(),Sorts.anchorSort(imagens,2));
 
-			//Ancor sort (método próprio)
+			//Anchor sort (método próprio)
 		//ordenações por nome da imagem
 		System.out.print("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
 	}
