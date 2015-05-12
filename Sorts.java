@@ -21,6 +21,29 @@
 
 public class Sorts{
 
+  public static ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
+    int tipo;
+    if(tipoSort=="nome") tipo = 2;
+    else tipo = 1;
+
+    switch(nomeSort){
+      case "selection":
+        return selectionSort(imagensRandomizadas,tipo);
+      case "shell":
+        return shellSort(imagensRandomizadas,tipo);
+      case "bubble":
+        return bubbleSort(imagensRandomizadas,tipo);
+      case "insertion":
+        return insertionSort(imagensRandomizadas,tipo);
+      case "ancor":
+        return ancorSort(imagensRandomizadas,tipo);
+      default:
+        System.out.print("Não foi possível executar o algoritimo de ordenação.");
+        return imagensRandomizadas;
+    }
+
+  }
+
   //método de exemplo
   //não se esqueça do "public static!"m mude apenas o nome exemplo sort e o comentario dentro do método...
   public static ArrayList<Imagem> exemploSort(ArrayList<Imagem> imagens){ //retorna um ArrayList de Imagem, mas usa 'imagens' como parametro
