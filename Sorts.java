@@ -24,7 +24,8 @@ public class Sorts{
   public static ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
     int tipo;
     if(tipoSort=="nome") tipo = 2;
-    else tipo = 1;
+    else if(tipoSort=="nome") tipo = 1;
+    else tipo = 0;
 
     switch(nomeSort){
       case "selection":
@@ -38,7 +39,7 @@ public class Sorts{
       case "ancor":
         return ancorSort(imagensRandomizadas,tipo);
       default:
-        System.out.print("Não foi possível executar o algoritimo de ordenação.");
+        System.out.println("Não foi possível executar o algoritimo de ordenação.");
         return imagensRandomizadas;
     }
 

@@ -71,34 +71,28 @@ public class Main{
 		Collections.shuffle(imagens);//Ramdomiza ordem dos arquivos
 
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(nomesArquivos.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
-		System.out.print("Tempo para carregar os arquivos e desordena-los de forma aleatória: ");
-		salvarArquivo("ArquivosDesordenados.txt",tempoInicio,imagens);
+		salvarArquivo("Arquivos Desordenados","",imagens);
 		System.out.println();
 
 		//ordenações por tamanho da imagem
 			//selection sort -- copie toda este código para usar outro método
-			System.out.print("Tempo gasto SelectionSort:\t\t\t");
-			salvarArquivo("SelectionSort.txt",System.nanoTime(),Sorts.sort("selection","tamanho",imagens)); //é só colocar essa linha para cada método de sort
+			salvarArquivo("selection","tamanho",imagens); //é só colocar essa linha para cada método de sort
 			//fim selection sort
 
 			//shell sort
-			System.out.print("Tempo gasto ShellSort:\t\t\t\t");
-			salvarArquivo("ShellSort.txt",System.nanoTime(),Sorts.sort("shell","tamanho",imagens));
+			salvarArquivo("shell","tamanho",imagens);
 			//fim shell sort
 
 			//insertion sort
-			System.out.print("Tempo gasto InsertionSort:\t\t\t");
-			salvarArquivo("InsertionSort.txt",System.nanoTime(),Sorts.sort("bubble","tamanho",imagens));
+			salvarArquivo("bubble","tamanho",imagens);
 			//insertion sort
 
 			//bubble sort
-			System.out.print("Tempo gasto BubbleSort:\t\t\t\t");
-			salvarArquivo("BubbleSort.txt",System.nanoTime(),Sorts.sort("insertion","tamanho",imagens));
+			salvarArquivo("insertion","tamanho",imagens);
 			//bubble sort
 
 			//Ancor sort (método próprio)
-			System.out.print("Tempo gasto AncorSort:\t\t\t\t");
-			salvarArquivo("AncorSort.txt",System.nanoTime(),Sorts.sort("ancor","tamanho",imagens));
+			salvarArquivo("ancor","tamanho",imagens);
 			//Ancor sort (método próprio)
 		//ordenações por tamanho da imagem
 
@@ -107,48 +101,46 @@ public class Main{
 		//ordenações por nome da imagem
 		System.out.println("\nOrdenações por nome do arquivo:");
 			//selection sort - Nome Imagem
-			System.out.print("Tempo gasto SelectionSort:\t\t\t");
-			salvarArquivo("SelectionSort - Por Nome.txt",System.nanoTime(),Sorts.sort("selection","nome",imagens));
+			salvarArquivo("selection","nome",imagens);
 			//selection sort - Nome Imagem
 
 			//shell sort
-			System.out.print("Tempo gasto ShellSort:\t\t\t\t");
-			salvarArquivo("ShellSort - Por Nome.txt",System.nanoTime(),Sorts.sort("shell","nome",imagens));
+			salvarArquivo("shell","nome",imagens);
 			//fim shell sort
 
 			//insertion sort
-			System.out.print("Tempo gasto InsertionSort:\t\t\t");
-			salvarArquivo("InsertionSort - Por Nome.txt",System.nanoTime(),Sorts.sort("bubble","nome",imagens));
+			salvarArquivo("bubble","nome",imagens);
 			//insertion sort
 
 			//bubble sort
-			System.out.print("Tempo gasto BubbleSort:\t\t\t\t");
-			salvarArquivo("BubbleSort - Por Nome.txt",System.nanoTime(),Sorts.sort("insertion","nome",imagens));
+			salvarArquivo("insertion","nome",imagens);
 
 			//bubble sort
 
 			//Ancor sort (método próprio)
-			System.out.print("Tempo gasto AncorSort:\t\t\t\t");
-			salvarArquivo("AncorSort - Por Nome.txt",System.nanoTime(),Sorts.sort("ancor","nome",imagens));
+			salvarArquivo("ancor","nome",imagens);
 
 			//Ancor sort (método próprio)
 		//ordenações por nome da imagem
 		System.out.print("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
 	}
 
-	private static void salvarArquivo(String nomeArquivo,long tempoInicio, ArrayList<Imagem> imagens)  throws IOException{
+	private static void salvarArquivo(String nomeMetodo,String tipoOrdenacao, ArrayList<Imagem> imagensDesordenadas)  throws IOException{
+		float tempoInicio = System.nanoTime();
+		ArrayList<Imagem> imagens = Sorts.sort(nomeMetodo,tipoOrdenacao,imagensDesordenadas);
 		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
 
 		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
-		FileWriter arquivo = new FileWriter("relatorios/"+nomeArquivo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
+		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+" - "+tipoOrdenacao+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 
+		gravarArquivo.println("Método "+nomeMetodo);
 		gravarArquivo.printf("Tempo gasto: %.9f segundos.", tempoGasto);
 		gravarArquivo.println();
 		gravarArquivo.println();
 		gravarArquivo.println("Arquivos ordenados:");
-		System.out.printf("%.9f segundos.\n",tempoGasto);
+		System.out.printf("Tempo gasto "+nomeMetodo+": %.9f segundos.\n",tempoGasto);
 
 		for(int x=0;x<imagens.size();x++){
 			gravarArquivo.printf("%9d Bytes",imagens.get(x).getTamanhoBytes());
