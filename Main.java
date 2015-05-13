@@ -34,65 +34,32 @@ import java.util.Collections;
 public class Main{
 	public static int arquivosNaoCarregados = 0;
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
-		Scanner entrada = new Scanner(System.in);
+		String pastaImagens = "imagens/";
+		ListaImagens lista = new ListaImagens(pastaImagens);
 
-		long tempoInicio=System.nanoTime();
-
-		String pastaImagens = "imagens/"; //pasta onde os arquivos vão estar. (Matheus: Podemos colocar uma opção para o usuário digitar.)
-
-		File f; //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
-		ArrayList<String> nomesArquivos = new ArrayList<String>();
-		boolean erro;
-		do{
-			erro=false;
-			f = new File(pastaImagens);
-			try {
-					nomesArquivos.addAll(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
-				}
-			catch(NullPointerException e){
-				System.out.println("Erro, não existem arquivos na pasta "+ pastaImagens);
-
-				System.out.print("Digite outra pasta para a pasta imagens:");
-				pastaImagens = entrada.nextLine();
-				if(pastaImagens.equals("")) System.exit(0);
-				erro = true;
-			}
-		}while(erro==true);
-
-
-
-		ArrayList<Imagem> imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
-
-		if(pastaImagens.substring(pastaImagens.length() - 1)!="/")pastaImagens += "/"; //checa se a pastaImagens tem uma "/" no final, se não tiver, adiciona
-
-		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
-			imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
-		}
-		Collections.shuffle(imagens);//Ramdomiza ordem dos arquivos
-
-		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(nomesArquivos.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
-		salvarArquivo("Arquivos Desordenados","",imagens);
+		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(lista.imagens.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
+		salvarArquivo("Arquivos Desordenados","",lista.imagens);
 		System.out.println();
 
 		//ordenações por tamanho da imagem
 			//selection sort -- copie toda este código para usar outro método
-			salvarArquivo("selection","tamanho",imagens); //é só colocar essa linha para cada método de sort
+			salvarArquivo("selection","tamanho",lista.imagens); //é só colocar essa linha para cada método de sort
 			//fim selection sort
 
 			//shell sort
-			salvarArquivo("shell","tamanho",imagens);
+			salvarArquivo("shell","tamanho",lista.imagens);
 			//fim shell sort
 
 			//insertion sort
-			salvarArquivo("bubble","tamanho",imagens);
+			salvarArquivo("bubble","tamanho",lista.imagens);
 			//insertion sort
 
 			//bubble sort
-			salvarArquivo("insertion","tamanho",imagens);
+			salvarArquivo("insertion","tamanho",lista.imagens);
 			//bubble sort
 
 			//Anchor sort (método próprio)
-			salvarArquivo("anchor","tamanho",imagens);
+			salvarArquivo("anchor","tamanho",lista.imagens);
 			//Anchor sort (método próprio)
 		//ordenações por tamanho da imagem
 
@@ -101,24 +68,24 @@ public class Main{
 		//ordenações por nome da imagem
 		System.out.println("\nOrdenações por nome do arquivo:");
 			//selection sort - Nome Imagem
-			salvarArquivo("selection","nome",imagens);
+			salvarArquivo("selection","nome",lista.imagens);
 			//selection sort - Nome Imagem
 
 			//shell sort
-			salvarArquivo("shell","nome",imagens);
+			salvarArquivo("shell","nome",lista.imagens);
 			//fim shell sort
 
 			//insertion sort
-			salvarArquivo("bubble","nome",imagens);
+			salvarArquivo("bubble","nome",lista.imagens);
 			//insertion sort
 
 			//bubble sort
-			salvarArquivo("insertion","nome",imagens);
+			salvarArquivo("insertion","nome",lista.imagens);
 
 			//bubble sort
 
 			//Anchor sort (método próprio)
-			salvarArquivo("anchor","nome",imagens);
+			salvarArquivo("anchor","nome",lista.imagens);
 
 			//Anchor sort (método próprio)
 		//ordenações por nome da imagem
@@ -126,7 +93,7 @@ public class Main{
 	}
 
 	private static void salvarArquivo(String nomeMetodo,String tipoOrdenacao, ArrayList<Imagem> imagensDesordenadas)  throws IOException{
-		float tempoInicio = System.nanoTime();
+		long tempoInicio = System.nanoTime();
 		ArrayList<Imagem> imagens = Sorts.sort(nomeMetodo,tipoOrdenacao,imagensDesordenadas);
 		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
 
