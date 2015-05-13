@@ -91,9 +91,9 @@ public class Main{
 			salvarArquivo("insertion","tamanho",imagens);
 			//bubble sort
 
-			//Ancor sort (método próprio)
-			salvarArquivo("ancor","tamanho",imagens);
-			//Ancor sort (método próprio)
+			//Anchor sort (método próprio)
+			salvarArquivo("anchor","tamanho",imagens);
+			//Anchor sort (método próprio)
 		//ordenações por tamanho da imagem
 
 
@@ -117,10 +117,10 @@ public class Main{
 
 			//bubble sort
 
-			//Ancor sort (método próprio)
-			salvarArquivo("ancor","nome",imagens);
+			//Anchor sort (método próprio)
+			salvarArquivo("anchor","nome",imagens);
 
-			//Ancor sort (método próprio)
+			//Anchor sort (método próprio)
 		//ordenações por nome da imagem
 		System.out.print("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
 	}
