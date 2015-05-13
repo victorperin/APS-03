@@ -28,6 +28,8 @@ public class Sorts{
     else tipo = 0;
 
     switch(nomeSort){
+      case "Arquivos Desordenados":
+        return Main.lista.carregaImagens();
       case "selection":
         return selectionSort(imagensRandomizadas,tipo);
       case "shell":

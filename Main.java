@@ -33,11 +33,12 @@ import java.util.Collections;
 
 public class Main{
 	public static int arquivosNaoCarregados = 0;
+	public static ListaImagens lista;
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
 		String pastaImagens = "imagens/";
-		ListaImagens lista = new ListaImagens(pastaImagens);
+		lista = new ListaImagens(pastaImagens);
 
-		salvarArquivo("Arquivos Desordenados","",lista.carregaImagens());
+		salvarArquivo("Arquivos Desordenados","carregar-desordenados",lista.imagens);
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(lista.imagens.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 
 		System.out.println();
