@@ -12,18 +12,22 @@ import java.io.File;
 import java.util.Collections;
 
 public class ListaImagens{
+
   ArrayList<Imagem> imagens;
+  ArrayList<String> nomesArquivos;
+  String pastaImagens;
+
   public ListaImagens(String pastaImagens){
     Scanner entrada = new Scanner(System.in);
 
     File f; //cria um objeto arquivo para a pasta de imagens, para conseguir pegar o conteúdo da pasta
-    ArrayList<String> nomesArquivos = new ArrayList<String>(); // cria um arraylist em branco para o nome dos arquivos
+    this.nomesArquivos = new ArrayList<String>(); // cria um arraylist em branco para o nome dos arquivos
     boolean erro;
     do{
       erro=false;
       f = new File(pastaImagens);
       try {
-          nomesArquivos.addAll(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
+          this.nomesArquivos.addAll(Arrays.asList(f.list())); //gera um ArrayList apenas com os nomes dos arquivos
         }
       catch(NullPointerException e){
         System.out.println("Erro, não existem arquivos na pasta "+ pastaImagens);
@@ -34,15 +38,17 @@ public class ListaImagens{
         erro = true;
       }
     }while(erro==true);
-
+    this.pastaImagens = pastaImagens;
     this.imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
+  }
+  public ArrayList<Imagem> carregaImagens(){
+    if(this.pastaImagens.substring(this.pastaImagens.length() - 1)!="/")this.pastaImagens += "/"; //checa se a pastaImagens tem uma "/" no final, se não tiver, adiciona
 
-		if(pastaImagens.substring(pastaImagens.length() - 1)!="/")pastaImagens += "/"; //checa se a pastaImagens tem uma "/" no final, se não tiver, adiciona
-
-		for(int x=0;x<nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
+		for(int x=0;x<this.nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
       this.imagens.add(new Imagem(pastaImagens+nomesArquivos.get(x)));
 		}
 		Collections.shuffle(this.imagens);//Ramdomiza ordem dos arquivos
+    return this.imagens;
   }
 
 }

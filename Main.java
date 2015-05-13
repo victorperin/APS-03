@@ -37,8 +37,9 @@ public class Main{
 		String pastaImagens = "imagens/";
 		ListaImagens lista = new ListaImagens(pastaImagens);
 
+		salvarArquivo("Arquivos Desordenados","",lista.carregaImagens());
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+(lista.imagens.size()-arquivosNaoCarregados)); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
-		salvarArquivo("Arquivos Desordenados","",lista.imagens);
+
 		System.out.println();
 
 		//ordenações por tamanho da imagem
