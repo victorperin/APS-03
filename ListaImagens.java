@@ -42,11 +42,20 @@ public class ListaImagens{
     this.imagens = new ArrayList<Imagem>(); //cria um ArrayList (vazio) de Objetos Imagem (o que eu criei), É ESSE ARRAY LIST QUE VOCÊS VÃO USAR!
   }
   public ArrayList<Imagem> carregaImagens(){
-    if(this.pastaImagens.substring(this.pastaImagens.length() - 1)!="/")this.pastaImagens += "/"; //checa se a pastaImagens tem uma "/" no final, se não tiver, adiciona
+    if(!this.pastaImagens.substring(this.pastaImagens.length() - 1,this.pastaImagens.length()).contains("/"))this.pastaImagens += "/"; //checa se a pastaImagens tem uma "/" no final, se não tiver, adiciona
 
 		for(int x=0;x<this.nomesArquivos.size();x++){ //esse for copia o ArrayList nomesArquivos para o ArrayList imagens
       Imagem imagem = new Imagem(pastaImagens+nomesArquivos.get(x));
-      if(imagem.getNome()!=null) this.imagens.add(imagem);
+      if(imagem.getNome() != null && !imagem.getNome().isEmpty()) this.imagens.add(imagem);
+      else{
+        ListaImagens subpasta = new ListaImagens(this.pastaImagens+nomesArquivos.get(x));
+        subpasta.carregaImagens();
+        for(int y=0;y<subpasta.nomesArquivos.size();y++){
+          System.out.println(subpasta.pastaImagens+subpasta.nomesArquivos.get(y));
+          Imagem sub_imagem = new Imagem(subpasta.pastaImagens+subpasta.nomesArquivos.get(y));
+          if(imagem.getNome() != null && !imagem.getNome().isEmpty())this.imagens.add(sub_imagem);
+        }
+      }
 		}
 		Collections.shuffle(this.imagens);//Ramdomiza ordem dos arquivos
     return this.imagens;
