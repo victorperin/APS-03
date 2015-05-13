@@ -35,6 +35,39 @@ public class Main{
 	public static int arquivosNaoCarregados = 0;
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
 		Scanner entrada = new Scanner(System.in);
+		
+		
+		int op;
+		
+		do{
+			System.out.println("Selecione uma opção");
+			System.out.println("1 - test ok");
+			System.out.println("2 - sair");
+			
+			try{
+				op= Integer.parseInt(entrada.nextLine());
+			}catch(Exception e){
+				op=0;
+			}
+			switch(op){			
+				
+				case 1 :
+					System.out.println("opção 1 selecionada");
+					break;
+				
+				case 2 :
+					System.out.println("sair");
+					break;
+					
+				default :
+					System.out.println("tente novamente\n");
+					//op = 0;
+					break;
+							
+			}
+				
+		}while(op !=1 && op!=2);
+		
 
 		long tempoInicio=System.nanoTime();
 
