@@ -12,7 +12,6 @@
  * 	-Medir o tempo de cada algoritimo.
  ************************************************************************/
 
-import java.util.Scanner;
 
 //import das classes de array e array list
 import java.util.Arrays;
@@ -27,9 +26,6 @@ import java.io.File;
 //importando biblioteca de escrita de arquivos
 import java.io.PrintWriter;
 import java.io.FileWriter;
-
-//biblioteca usada para randomizar o arquivo
-import java.util.Collections;
 
 public class Main{
 	public static ListaImagens lista;

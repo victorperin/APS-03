@@ -51,9 +51,8 @@ public class ListaImagens{
         ListaImagens subpasta = new ListaImagens(this.pastaImagens+nomesArquivos.get(x));
         subpasta.carregaImagens();
         for(int y=0;y<subpasta.nomesArquivos.size();y++){
-          System.out.println(subpasta.pastaImagens+subpasta.nomesArquivos.get(y));
           Imagem sub_imagem = new Imagem(subpasta.pastaImagens+subpasta.nomesArquivos.get(y));
-          if(imagem.getNome() != null && !imagem.getNome().isEmpty())this.imagens.add(sub_imagem);
+          if(sub_imagem.getNome() != null && !sub_imagem.getNome().isEmpty()) this.imagens.add(sub_imagem);
         }
       }
 		}
