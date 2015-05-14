@@ -197,5 +197,8 @@ public class Sorts{
     if(compare > 0) return true;
     else return false;
   }
+  public long getQuantidadeOperacoes(){
+    return this.quantidadeOperacoes;
+  }
 
 }
