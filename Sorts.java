@@ -20,7 +20,10 @@
  import java.util.ArrayList;
 
 public class Sorts{
-  public Sorts(){}
+  private long quantidadeOperacoes;
+  public Sorts(){
+    quantidadeOperacoes=0;
+  }
 
   public ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
     int tipo;
