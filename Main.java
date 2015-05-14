@@ -29,10 +29,11 @@ import java.io.FileWriter;
 
 public class Main{
 	public static ListaImagens lista;
+	public static Resumo arquivoResumo;
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
 		String pastaImagens = "imagens";
 		lista = new ListaImagens(pastaImagens);
-
+		arquivoResumo = new Resumo();
 		salvarArquivo("Arquivos Desordenados","carregar-desordenados",lista.imagens);
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+lista.imagens.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 
@@ -86,13 +87,17 @@ public class Main{
 
 			//Anchor sort (método próprio)
 		//ordenações por nome da imagem
-		System.out.print("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
+		System.out.println("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
+		Main.arquivoResumo.salvarArquivo();
 	}
 
 	private static void salvarArquivo(String nomeMetodo,String tipoOrdenacao, ArrayList<Imagem> imagensDesordenadas)  throws IOException{
 		long tempoInicio = System.nanoTime();
 		ArrayList<Imagem> imagens = Sorts.sort(nomeMetodo,tipoOrdenacao,imagensDesordenadas);
 		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
+
+
+		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto);
 
 		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
 		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+" - "+tipoOrdenacao+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
