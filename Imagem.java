@@ -43,5 +43,8 @@ public class Imagem{
 	public long getTamanhoBytes(){ //retorna o tamanho do arquio em bytes (324)
 		return this.tamanhoBytes;
 	}
+	public long getDataModificacao(){
+		return this.data;
+	}
 
 }
