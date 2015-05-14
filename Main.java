@@ -90,6 +90,34 @@ public class Main{
 
 			//Anchor sort (método próprio)
 		//ordenações por nome da imagem
+
+
+		//ordenações por data de modificação da imagem
+		System.out.println("\nOrdenações por data do arquivo:");
+			//selection sort - Nome Imagem
+			salvarArquivo("selection","data",lista.imagens);
+			//selection sort - Nome Imagem
+
+			//shell sort
+			salvarArquivo("shell","data",lista.imagens);
+			//fim shell sort
+
+			//insertion sort
+			salvarArquivo("bubble","data",lista.imagens);
+			//insertion sort
+
+			//bubble sort
+			salvarArquivo("insertion","data",lista.imagens);
+
+			//bubble sort
+
+			//Anchor sort (método próprio)
+			salvarArquivo("anchor","data",lista.imagens);
+
+			//Anchor sort (método próprio)
+		//ordenações por data de modificação da imagem
+
+
 		System.out.println("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
 		Main.arquivoResumo.salvarArquivo();
 	}
