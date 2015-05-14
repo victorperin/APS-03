@@ -44,6 +44,7 @@ public class Main{
 		System.out.println();
 
 		//ordenações por tamanho da imagem
+		System.out.println("\nOrdenações por tamanho do arquivo:");
 			//selection sort -- copie toda este código para usar outro método
 			salvarArquivo("selection","tamanho",lista.imagens); //é só colocar essa linha para cada método de sort
 			//fim selection sort
