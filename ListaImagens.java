@@ -32,7 +32,7 @@ public class ListaImagens{
       catch(NullPointerException e){
         System.out.println("Erro, não existem arquivos na pasta "+ pastaImagens);
 
-        System.out.print("Digite outra pasta para a pasta imagens:");
+        System.out.print("Digite outra pasta para a pasta imagens (ou enter para sair): ");
         pastaImagens = entrada.nextLine();
         if(pastaImagens.equals("")) System.exit(0);
         erro = true;
