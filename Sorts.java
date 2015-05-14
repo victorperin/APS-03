@@ -15,6 +15,7 @@
  * int tipo
  *  - 1: tamanhoBytes
  *  - 2: Nome do Arquivo
+ *  - 3: Data de modificação
  ************************************************************************/
  import java.util.Arrays;
  import java.util.ArrayList;
@@ -23,9 +24,12 @@ public class Sorts{
 
   public static ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
     int tipo;
-    if(tipoSort=="nome") tipo = 2;
-    else if(tipoSort=="nome") tipo = 1;
-    else tipo = 0;
+    switch(tipoSort){
+      case "tamanho": tipo = 1;break;
+      case "nome": tipo = 2;break;
+      case "data": tipo = 3;break;
+      default:tipo = 0;
+    }
 
     switch(nomeSort){
       case "Arquivos Desordenados":
@@ -64,7 +68,8 @@ public class Sorts{
         for (int i = menor + 1; i < imagens.size(); i++){
           boolean checarMenor;
           if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
-          else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+          else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+          else checarMenor = imagens.get(i).getDataModificacao() < imagens.get(menor).getDataModificacao();
           if(checarMenor){
               menor = i;
           }
@@ -98,9 +103,14 @@ public class Sorts{
           for (j = i; j >= gap && checarSeArquivoEhAntes(imagens.get(j - gap),tempVal); j -= gap){
             imagens.set(j, imagens.get(j - gap)); // trocando...
           }
-        }else{
+        }else if(tipo==1){
   			  // comparando os elementos por tamanho
   			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
+  				  imagens.set(j, imagens.get(j - gap)); // trocando...
+  			  }
+        }else{
+  			  // comparando os elementos por tamanho
+  			  for (j = i; j >= gap && tempVal.getDataModificacao() < imagens.get(j - gap).getDataModificacao(); j -= gap){
   				  imagens.set(j, imagens.get(j - gap)); // trocando...
   			  }
         }
@@ -121,7 +131,8 @@ public class Sorts{
             {
                 boolean checarMenor;
                 if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(i),imagens.get(i + 1));
-                else checarMenor = imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes();
+                else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes();
+                else checarMenor = imagens.get(i).getDataModificacao() > imagens.get(i + 1).getDataModificacao();
                 if (checarMenor)
                 {
                    aux = imagens.get(i);
@@ -142,7 +153,8 @@ public class Sorts{
       for (int i = menor + 1; i < imagens.size(); i++){
         boolean checarMenor;
         if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
-        else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+        else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+        else checarMenor = imagens.get(i).getDataModificacao() < imagens.get(menor).getDataModificacao();
         if (checarMenor){
     		    menor = i;
         }
@@ -167,7 +179,8 @@ public class Sorts{
         for (int i = menor + 1; i < imagens.size(); i++){
           boolean checarMenor;
           if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
-          else checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+          else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
+          else checarMenor = imagens.get(i).getDataModificacao() < imagens.get(menor).getDataModificacao();
           if (checarMenor){
               menor = i;
           }

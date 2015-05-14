@@ -27,6 +27,9 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
+//importando biblioteca para converter valores em long para data;
+import java.text.SimpleDateFormat;
+
 public class Main{
 	public static ListaImagens lista;
 	public static Resumo arquivoResumo;
@@ -34,7 +37,7 @@ public class Main{
 		String pastaImagens = "imagens";
 		lista = new ListaImagens(pastaImagens);
 		arquivoResumo = new Resumo();
-		salvarArquivo("Arquivos Desordenados","carregar-desordenados",lista.imagens);
+		salvarArquivo("Arquivos Desordenados","",lista.imagens);
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+lista.imagens.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 
 		System.out.println();
@@ -87,6 +90,34 @@ public class Main{
 
 			//Anchor sort (método próprio)
 		//ordenações por nome da imagem
+
+
+		//ordenações por data de modificação da imagem
+		System.out.println("\nOrdenações por data do arquivo:");
+			//selection sort - Nome Imagem
+			salvarArquivo("selection","data",lista.imagens);
+			//selection sort - Nome Imagem
+
+			//shell sort
+			salvarArquivo("shell","data",lista.imagens);
+			//fim shell sort
+
+			//insertion sort
+			salvarArquivo("bubble","data",lista.imagens);
+			//insertion sort
+
+			//bubble sort
+			salvarArquivo("insertion","data",lista.imagens);
+
+			//bubble sort
+
+			//Anchor sort (método próprio)
+			salvarArquivo("anchor","data",lista.imagens);
+
+			//Anchor sort (método próprio)
+		//ordenações por data de modificação da imagem
+
+
 		System.out.println("\nPor favor, verifique a pasta relatorios para visualizar todos os dados.");
 		Main.arquivoResumo.salvarArquivo();
 	}
@@ -100,7 +131,7 @@ public class Main{
 		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto);
 
 		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
-		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+" - "+tipoOrdenacao+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
+		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+(!tipoOrdenacao.isEmpty()?" - "+tipoOrdenacao:"")+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 
@@ -110,10 +141,13 @@ public class Main{
 		gravarArquivo.println();
 		gravarArquivo.println("Arquivos ordenados:");
 		System.out.printf("Tempo gasto "+nomeMetodo+": %.9f segundos.\n",tempoGasto);
+		SimpleDateFormat conversorData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
 		for(int x=0;x<imagens.size();x++){
-			gravarArquivo.printf("%9d Bytes",imagens.get(x).getTamanhoBytes());
-			gravarArquivo.println("\t\t"+imagens.get(x).getNome());
+			gravarArquivo.printf("| %s |",conversorData.format(imagens.get(x).getDataModificacao()));
+			gravarArquivo.printf(" %9d Bytes |",imagens.get(x).getTamanhoBytes());
+			gravarArquivo.printf(" %-36s |",imagens.get(x).getNome());
+			gravarArquivo.println();
 		}
 
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
