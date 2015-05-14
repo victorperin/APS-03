@@ -37,7 +37,7 @@ public class Main{
 		String pastaImagens = "imagens";
 		lista = new ListaImagens(pastaImagens);
 		arquivoResumo = new Resumo();
-		salvarArquivo("Arquivos Desordenados","carregar-desordenados",lista.imagens);
+		salvarArquivo("Arquivos Desordenados","",lista.imagens);
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+lista.imagens.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
 
 		System.out.println();
@@ -103,7 +103,7 @@ public class Main{
 		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto);
 
 		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
-		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+" - "+tipoOrdenacao+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
+		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+(!tipoOrdenacao.isEmpty()?" - "+tipoOrdenacao:"")+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 
@@ -118,7 +118,7 @@ public class Main{
 		for(int x=0;x<imagens.size();x++){
 			gravarArquivo.printf("| %s |",conversorData.format(imagens.get(x).getDataModificacao()));
 			gravarArquivo.printf(" %9d Bytes |",imagens.get(x).getTamanhoBytes());
-			gravarArquivo.printf(" %-30s |",imagens.get(x).getNome());
+			gravarArquivo.printf(" %-36s |",imagens.get(x).getNome());
 			gravarArquivo.println();
 		}
 
