@@ -77,7 +77,9 @@ public class Sorts{
           // Troca
           Imagem t = imagens.get(fixo);
           imagens.set(fixo,imagens.get(menor));
+          this.quantidadeOperacoes++;
           imagens.set(menor,t);
+          this.quantidadeOperacoes++;
         }
       }
     return imagens;
@@ -101,14 +103,17 @@ public class Sorts{
           // comparando os elementos por nome
           for (j = i; j >= gap && checarSeArquivoEhAntes(imagens.get(j - gap),tempVal); j -= gap){
             imagens.set(j, imagens.get(j - gap)); // trocando...
+            this.quantidadeOperacoes++;
           }
         }else{
   			  // comparando os elementos por tamanho
   			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
   				  imagens.set(j, imagens.get(j - gap)); // trocando...
+            this.quantidadeOperacoes++;
   			  }
         }
 			  imagens.set(j, tempVal); // trocando...
+        this.quantidadeOperacoes++;
 		  }
 	  }
 	  return imagens;
@@ -130,7 +135,9 @@ public class Sorts{
                 {
                    aux = imagens.get(i);
                    imagens.set(i,imagens.get(i + 1));
+                   this.quantidadeOperacoes++;
                    imagens.set(i + 1,aux);
+                   this.quantidadeOperacoes++;
                    troca = true;
                 }
             }
@@ -155,7 +162,9 @@ public class Sorts{
       	// Troca
         Imagem t = imagens.get(fixo);
         imagens.set(fixo,imagens.get(menor));
+        this.quantidadeOperacoes++;
         imagens.set(menor,t);
+        this.quantidadeOperacoes++;
       }
     }
     return imagens;
@@ -180,7 +189,9 @@ public class Sorts{
           // Troca
           Imagem t = imagens.get(fixo);
           imagens.set(fixo,imagens.get(menor));
+          this.quantidadeOperacoes++;
           imagens.set(menor,t);
+          this.quantidadeOperacoes++;
         }
       }
       return imagens;
