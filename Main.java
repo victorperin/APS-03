@@ -36,6 +36,7 @@ public class Main{
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
 		String pastaImagens = "imagens";
 		lista = new ListaImagens(pastaImagens);
+		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
 		arquivoResumo = new Resumo();
 		salvarArquivo("Arquivos Desordenados","",lista.imagens);
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+lista.imagens.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
@@ -130,7 +131,7 @@ public class Main{
 
 		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto);
 
-		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
+
 		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+(!tipoOrdenacao.isEmpty()?" - "+tipoOrdenacao:"")+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
