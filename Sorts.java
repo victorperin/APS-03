@@ -20,8 +20,9 @@
  import java.util.ArrayList;
 
 public class Sorts{
+  public Sorts(){}
 
-  public static ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
+  public ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
     int tipo;
     if(tipoSort=="nome") tipo = 2;
     else if(tipoSort=="nome") tipo = 1;
@@ -49,14 +50,14 @@ public class Sorts{
 
   //método de exemplo
   //não se esqueça do "public static!"m mude apenas o nome exemplo sort e o comentario dentro do método...
-  public static ArrayList<Imagem> exemploSort(ArrayList<Imagem> imagens){ //retorna um ArrayList de Imagem, mas usa 'imagens' como parametro
+  public ArrayList<Imagem> exemploSort(ArrayList<Imagem> imagens){ //retorna um ArrayList de Imagem, mas usa 'imagens' como parametro
     //algoritimo de ordenação aqui
     imagens.get(0).getNome(); //se você for ordenar por nome, use esse método, lembre-se de usar um for e ao invés de 0 use uma variável (lembre-se isso é igual a um array)
     imagens.get(0).getTamanhoBytes(); //se for usar para ordenar por tamanho de arquivo (o mais fácil)
     return imagens;
   }
 
-  public static ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens, int tipo){
+  public ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens, int tipo){
 
 
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
@@ -82,7 +83,7 @@ public class Sorts{
   //coloque outros métodos aqui
 
   // Shellsort GABI
-  public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens,int tipo){
+  public ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens,int tipo){
 	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
 	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
 
@@ -109,7 +110,7 @@ public class Sorts{
 	  }
 	  return imagens;
 }
-  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens,int tipo){
+  public ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens,int tipo){
   {
         imagens.get(0).getTamanhoBytes();
 
@@ -135,7 +136,7 @@ public class Sorts{
     return imagens;
   }
 
-  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens, int tipo){
+  public ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens, int tipo){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
       int menor = fixo;
 
@@ -160,7 +161,7 @@ public class Sorts{
     //AnchorSort
     //By: Todo mundo
     //Objective: Sort próprio, obrigatório na APS
-    public static ArrayList<Imagem> anchorSort(ArrayList<Imagem> imagens,int tipo){
+    public ArrayList<Imagem> anchorSort(ArrayList<Imagem> imagens,int tipo){
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
         int menor = fixo;
 
@@ -188,7 +189,7 @@ public class Sorts{
    * O método retorna true,
    * se não, retorna false.
    ****************************************************************************/
-  public static boolean checarSeArquivoEhAntes(Imagem primeiro, Imagem segundo){
+  public boolean checarSeArquivoEhAntes(Imagem primeiro, Imagem segundo){
     int compare = primeiro.getNome().compareTo(segundo.getNome());
     if(compare > 0) return true;
     else return false;
