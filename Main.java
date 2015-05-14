@@ -27,6 +27,9 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
+//importando biblioteca para converter valores em long para data;
+import java.text.SimpleDateFormat;
+
 public class Main{
 	public static ListaImagens lista;
 	public static Resumo arquivoResumo;
@@ -110,10 +113,13 @@ public class Main{
 		gravarArquivo.println();
 		gravarArquivo.println("Arquivos ordenados:");
 		System.out.printf("Tempo gasto "+nomeMetodo+": %.9f segundos.\n",tempoGasto);
+		SimpleDateFormat conversorData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
 		for(int x=0;x<imagens.size();x++){
-			gravarArquivo.printf("%9d Bytes",imagens.get(x).getTamanhoBytes());
-			gravarArquivo.println("\t\t"+imagens.get(x).getNome());
+			gravarArquivo.printf("| %s |",conversorData.format(imagens.get(x).getDataModificacao()));
+			gravarArquivo.printf(" %9d Bytes |",imagens.get(x).getTamanhoBytes());
+			gravarArquivo.printf(" %-30s |",imagens.get(x).getNome());
+			gravarArquivo.println();
 		}
 
 		arquivo.close(); //Fecha o arquivo (pelo que entendi é quase um save)
