@@ -23,9 +23,11 @@ public class Sorts{
 
   public static ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
     int tipo;
-    if(tipoSort=="nome") tipo = 2;
-    else if(tipoSort=="tipo") tipo = 1;
-    else tipo = 0;
+    switch(tipoSort){
+      case "tamanho": tipo = 1;break;
+      case "nome": tipo = 2;break;
+      default:tipo = 0;
+    }
 
     switch(nomeSort){
       case "Arquivos Desordenados":
