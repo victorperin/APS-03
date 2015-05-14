@@ -124,8 +124,9 @@ public class Main{
 	}
 
 	private static void salvarArquivo(String nomeMetodo,String tipoOrdenacao, ArrayList<Imagem> imagensDesordenadas)  throws IOException{
+		Sorts sorts = new Sorts();
 		long tempoInicio = System.nanoTime();
-		ArrayList<Imagem> imagens = Sorts.sort(nomeMetodo,tipoOrdenacao,imagensDesordenadas);
+		ArrayList<Imagem> imagens = sorts.sort(nomeMetodo,tipoOrdenacao,imagensDesordenadas);
 		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
 
 

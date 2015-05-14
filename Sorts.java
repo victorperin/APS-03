@@ -21,8 +21,12 @@
  import java.util.ArrayList;
 
 public class Sorts{
+  private long quantidadeOperacoes;
+  public Sorts(){
+    quantidadeOperacoes=0;
+  }
 
-  public static ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
+  public ArrayList<Imagem> sort(String nomeSort,String tipoSort, ArrayList<Imagem>imagensRandomizadas){
     int tipo;
     switch(tipoSort){
       case "tamanho": tipo = 1;break;
@@ -53,14 +57,14 @@ public class Sorts{
 
   //método de exemplo
   //não se esqueça do "public static!"m mude apenas o nome exemplo sort e o comentario dentro do método...
-  public static ArrayList<Imagem> exemploSort(ArrayList<Imagem> imagens){ //retorna um ArrayList de Imagem, mas usa 'imagens' como parametro
+  public ArrayList<Imagem> exemploSort(ArrayList<Imagem> imagens){ //retorna um ArrayList de Imagem, mas usa 'imagens' como parametro
     //algoritimo de ordenação aqui
     imagens.get(0).getNome(); //se você for ordenar por nome, use esse método, lembre-se de usar um for e ao invés de 0 use uma variável (lembre-se isso é igual a um array)
     imagens.get(0).getTamanhoBytes(); //se for usar para ordenar por tamanho de arquivo (o mais fácil)
     return imagens;
   }
 
-  public static ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens, int tipo){
+  public ArrayList<Imagem> selectionSort(ArrayList<Imagem> imagens, int tipo){
 
 
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
@@ -78,7 +82,9 @@ public class Sorts{
           // Troca
           Imagem t = imagens.get(fixo);
           imagens.set(fixo,imagens.get(menor));
+          this.quantidadeOperacoes++;
           imagens.set(menor,t);
+          this.quantidadeOperacoes++;
         }
       }
     return imagens;
@@ -87,7 +93,7 @@ public class Sorts{
   //coloque outros métodos aqui
 
   // Shellsort GABI
-  public static ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens,int tipo){
+  public ArrayList<Imagem> shellSort(ArrayList<Imagem> imagens,int tipo){
 	  // cria laço de repetição para calcular o valor dos "pulos" (gap)
 	  for(int gap = imagens.size()/2; gap > 0; gap /= 2){
 
@@ -102,11 +108,13 @@ public class Sorts{
           // comparando os elementos por nome
           for (j = i; j >= gap && checarSeArquivoEhAntes(imagens.get(j - gap),tempVal); j -= gap){
             imagens.set(j, imagens.get(j - gap)); // trocando...
+            this.quantidadeOperacoes++;
           }
         }else if(tipo==1){
   			  // comparando os elementos por tamanho
   			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
   				  imagens.set(j, imagens.get(j - gap)); // trocando...
+            this.quantidadeOperacoes++;
   			  }
         }else{
   			  // comparando os elementos por tamanho
@@ -115,11 +123,12 @@ public class Sorts{
   			  }
         }
 			  imagens.set(j, tempVal); // trocando...
+        this.quantidadeOperacoes++;
 		  }
 	  }
 	  return imagens;
 }
-  public static ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens,int tipo){
+  public ArrayList<Imagem> bubbleSort(ArrayList<Imagem> imagens,int tipo){
   {
         imagens.get(0).getTamanhoBytes();
 
@@ -137,7 +146,9 @@ public class Sorts{
                 {
                    aux = imagens.get(i);
                    imagens.set(i,imagens.get(i + 1));
+                   this.quantidadeOperacoes++;
                    imagens.set(i + 1,aux);
+                   this.quantidadeOperacoes++;
                    troca = true;
                 }
             }
@@ -146,7 +157,7 @@ public class Sorts{
     return imagens;
   }
 
-  public static ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens, int tipo){
+  public ArrayList<Imagem> insertionSort(ArrayList<Imagem> imagens, int tipo){
     for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
       int menor = fixo;
 
@@ -163,7 +174,9 @@ public class Sorts{
       	// Troca
         Imagem t = imagens.get(fixo);
         imagens.set(fixo,imagens.get(menor));
+        this.quantidadeOperacoes++;
         imagens.set(menor,t);
+        this.quantidadeOperacoes++;
       }
     }
     return imagens;
@@ -172,7 +185,7 @@ public class Sorts{
     //AnchorSort
     //By: Todo mundo
     //Objective: Sort próprio, obrigatório na APS
-    public static ArrayList<Imagem> anchorSort(ArrayList<Imagem> imagens,int tipo){
+    public ArrayList<Imagem> anchorSort(ArrayList<Imagem> imagens,int tipo){
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
         int menor = fixo;
 
@@ -189,7 +202,9 @@ public class Sorts{
           // Troca
           Imagem t = imagens.get(fixo);
           imagens.set(fixo,imagens.get(menor));
+          this.quantidadeOperacoes++;
           imagens.set(menor,t);
+          this.quantidadeOperacoes++;
         }
       }
       return imagens;
@@ -201,10 +216,13 @@ public class Sorts{
    * O método retorna true,
    * se não, retorna false.
    ****************************************************************************/
-  public static boolean checarSeArquivoEhAntes(Imagem primeiro, Imagem segundo){
+  public boolean checarSeArquivoEhAntes(Imagem primeiro, Imagem segundo){
     int compare = primeiro.getNome().compareTo(segundo.getNome());
     if(compare > 0) return true;
     else return false;
+  }
+  public long getQuantidadeOperacoes(){
+    return this.quantidadeOperacoes;
   }
 
 }
