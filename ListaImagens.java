@@ -52,7 +52,7 @@ public class ListaImagens{
         subpasta.carregaImagens();
         for(int y=0;y<subpasta.nomesArquivos.size();y++){
           Imagem sub_imagem = new Imagem(subpasta.pastaImagens+subpasta.nomesArquivos.get(y));
-          if(sub_imagem.getNome() != null && !sub_imagem.getNome().isEmpty()) this.imagens.add(sub_imagem);
+          if(sub_imagem.getNome() != null && !sub_imagem.getNome().isEmpty()) Main.lista.imagens.add(sub_imagem);
         }
       }
 		}
