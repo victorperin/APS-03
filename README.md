@@ -29,8 +29,8 @@ Objetos - Sim, tem que saber usar...
 ##Métodos:
   Método de Sort  | Responsável | Estado | TamanhoArquivo | NomeArquivo | DataArquivo
   ------------ | ------------- | ------------- | ------------- | ------------- | -------------
-  Shell | Gabi | ok | ok | Meio Incompatível | aguardando
-  Selection | Victor | ok | ok | ok | aguardando
-  Insertion | Henrique | ok | ok | ok | aguardando
-  Bubble | Matheus | ok | ok | ok | aguardando
-  AncorSort | Victor/Sergio | ok | ok | ok | aguardando
+  Shell | Gabi | ok | ok | ok | ok
+  Selection | Victor | ok | ok | ok | ok
+  Insertion | Henrique | ok | ok | ok | ok
+  Bubble | Matheus | ok | ok | ok | ok
+  AncorSort | Victor/Sergio | ok | ok | ok | ok
