@@ -33,8 +33,12 @@ import java.text.SimpleDateFormat;
 public class Main{
 	public static ListaImagens lista;
 	public static Resumo arquivoResumo;
+
+	//variaveis de configuração durante a execução do programa
+	public static String pastaImagens;
+
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
-		String pastaImagens = "imagens";
+		pastaImagens = "imagens";
 		lista = new ListaImagens(pastaImagens);
 		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
 		arquivoResumo = new Resumo();
