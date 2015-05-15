@@ -70,6 +70,7 @@ public class Sorts{
       for (int fixo = 0; fixo < imagens.size() - 1; fixo++) {
         int menor = fixo;
         for (int i = menor + 1; i < imagens.size(); i++){
+          this.quantidadeOperacoes++;
           boolean checarMenor;
           if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
           else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
@@ -82,9 +83,8 @@ public class Sorts{
           // Troca
           Imagem t = imagens.get(fixo);
           imagens.set(fixo,imagens.get(menor));
-          this.quantidadeOperacoes++;
+
           imagens.set(menor,t);
-          this.quantidadeOperacoes++;
         }
       }
     return imagens;
@@ -99,7 +99,7 @@ public class Sorts{
 
 		  // laço de repetição para comparar e organizar os valores
 		  for (int i = gap; i < imagens.size(); i++){ // percorrendo a lista
-
+        this.quantidadeOperacoes++;
 			  Imagem tempVal = imagens.get(i); // recebe o valor temporário que vai ser comparado
 
 			  int j; // variável para procurar o 2o valor a ser comparado
@@ -108,13 +108,11 @@ public class Sorts{
           // comparando os elementos por nome
           for (j = i; j >= gap && checarSeArquivoEhAntes(imagens.get(j - gap),tempVal); j -= gap){
             imagens.set(j, imagens.get(j - gap)); // trocando...
-            this.quantidadeOperacoes++;
           }
         }else if(tipo==1){
   			  // comparando os elementos por tamanho
   			  for (j = i; j >= gap && tempVal.getTamanhoBytes() < imagens.get(j - gap).getTamanhoBytes(); j -= gap){
   				  imagens.set(j, imagens.get(j - gap)); // trocando...
-            this.quantidadeOperacoes++;
   			  }
         }else{
   			  // comparando os elementos por tamanho
@@ -123,7 +121,6 @@ public class Sorts{
   			  }
         }
 			  imagens.set(j, tempVal); // trocando...
-        this.quantidadeOperacoes++;
 		  }
 	  }
 	  return imagens;
@@ -138,6 +135,7 @@ public class Sorts{
             troca = false;
             for (int i = 0; i < imagens.size() - 1; i++)
             {
+                this.quantidadeOperacoes++;
                 boolean checarMenor;
                 if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(i),imagens.get(i + 1));
                 else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() > imagens.get(i + 1).getTamanhoBytes();
@@ -146,9 +144,7 @@ public class Sorts{
                 {
                    aux = imagens.get(i);
                    imagens.set(i,imagens.get(i + 1));
-                   this.quantidadeOperacoes++;
                    imagens.set(i + 1,aux);
-                   this.quantidadeOperacoes++;
                    troca = true;
                 }
             }
@@ -162,6 +158,7 @@ public class Sorts{
       int menor = fixo;
 
       for (int i = menor + 1; i < imagens.size(); i++){
+        this.quantidadeOperacoes++;
         boolean checarMenor;
         if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
         else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
@@ -174,9 +171,7 @@ public class Sorts{
       	// Troca
         Imagem t = imagens.get(fixo);
         imagens.set(fixo,imagens.get(menor));
-        this.quantidadeOperacoes++;
         imagens.set(menor,t);
-        this.quantidadeOperacoes++;
       }
     }
     return imagens;
@@ -190,6 +185,7 @@ public class Sorts{
         int menor = fixo;
 
         for (int i = menor + 1; i < imagens.size(); i++){
+          this.quantidadeOperacoes++;
           boolean checarMenor;
           if(tipo==2) checarMenor = checarSeArquivoEhAntes(imagens.get(menor),imagens.get(i));
           else if(tipo==1) checarMenor = imagens.get(i).getTamanhoBytes() < imagens.get(menor).getTamanhoBytes();
@@ -202,9 +198,7 @@ public class Sorts{
           // Troca
           Imagem t = imagens.get(fixo);
           imagens.set(fixo,imagens.get(menor));
-          this.quantidadeOperacoes++;
           imagens.set(menor,t);
-          this.quantidadeOperacoes++;
         }
       }
       return imagens;

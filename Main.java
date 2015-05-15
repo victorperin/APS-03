@@ -131,7 +131,7 @@ public class Main{
 		float tempoGasto =((float) (System.nanoTime() - tempoInicio))/1000000000;
 
 
-		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto);
+		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto,sorts.getQuantidadeOperacoes());
 
 
 		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+(!tipoOrdenacao.isEmpty()?" - "+tipoOrdenacao:"")+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
@@ -140,6 +140,8 @@ public class Main{
 
 		gravarArquivo.println("Método "+nomeMetodo);
 		gravarArquivo.printf("Tempo gasto: %.9f segundos.", tempoGasto);
+		gravarArquivo.println();
+		gravarArquivo.println("Quantidade de operações: "+sorts.getQuantidadeOperacoes());
 		gravarArquivo.println();
 		gravarArquivo.println();
 		gravarArquivo.println("Arquivos ordenados:");
