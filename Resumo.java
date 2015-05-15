@@ -16,7 +16,7 @@ public class Resumo{
   float menorTempo;
 
   public Resumo()  throws IOException{
-    this.nomeResumo = "relatorios/Resumo.txt";
+    this.nomeResumo = Main.pastaRelatorios+"Resumo.txt";
     this.arquivo = new FileWriter(this.nomeResumo); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
     this.gravarArquivo = new PrintWriter(this.arquivo); //um objeto feito para "Grava coisas no arquivo"
   }
