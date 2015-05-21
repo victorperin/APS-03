@@ -33,10 +33,15 @@ import java.text.SimpleDateFormat;
 public class Main{
 	public static ListaImagens lista;
 	public static Resumo arquivoResumo;
+
+	//variaveis de configuração durante a execução do programa
+	public static String pastaImagens,pastaRelatorios;
+
 	public static void main(String[] args) throws IOException{ //não sei direito utilizar throws, mas é o único jeito de carregar um arquivo...
-		String pastaImagens = "imagens";
+		pastaImagens = "imagens";
+		pastaRelatorios = "relatorios/";
 		lista = new ListaImagens(pastaImagens);
-		new File("relatorios/").mkdir(); //cria a pasta relatorios, se já não foi criada.
+		new File(pastaRelatorios).mkdir(); //cria a pasta relatorios, se já não foi criada.
 		arquivoResumo = new Resumo();
 		salvarArquivo("Arquivos Desordenados","",lista.imagens);
 		System.out.println("Quantidade de imagens na pasta \""+pastaImagens+"\": "+lista.imagens.size()); //Imprime na tela apenas a quantidade de arquivos que existem na pasta (Essa linha não faz nada no sistema apenas mostra informação para deixar mais fácil o debug.)
@@ -134,7 +139,7 @@ public class Main{
 		Main.arquivoResumo.escreverResumoMetodo(nomeMetodo,tipoOrdenacao,tempoGasto,sorts.getQuantidadeOperacoes());
 
 
-		FileWriter arquivo = new FileWriter("relatorios/"+nomeMetodo+(!tipoOrdenacao.isEmpty()?" - "+tipoOrdenacao:"")+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
+		FileWriter arquivo = new FileWriter(pastaRelatorios+nomeMetodo+(!tipoOrdenacao.isEmpty()?" - "+tipoOrdenacao:"")+".txt"); //Cria um novo arquivo (se o arquivo já existir, ele será subistituido)
 		PrintWriter gravarArquivo = new PrintWriter(arquivo); //um objeto feito para "Grava coisas no arquivo"
 
 
